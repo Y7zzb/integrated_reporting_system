@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x95ee;&#x5377;&#x6570;&#x636e;&#x4e00;&#x4f53;&#x5316;&#x5904;&#x7406;&#x7cfb;&#x7edf;&#x8bbe;&#x8ba1;&#x8bf4;&#x660e;&#x4e66;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<h1 id="问卷数据一体化处理系统设计说明书">问卷数据一体化处理系统设计说明书</h1>
+<hr>
+<h2 id="文档信息">文档信息</h2>
+<table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>问卷数据一体化处理系统</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>课程名称</td>
+<td>抽样技术</td>
+</tr>
+<tr>
+<td>团队人数</td>
+<td>5人</td>
+</tr>
+<tr>
+<td>编写日期</td>
+<td>2026年6月</td>
+</tr>
+<tr>
+<td>版本号</td>
+<td>V2.0</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="目录">目录</h2>
+<ol>
+<li>
+<p>第一章 项目概述</p>
+<ul>
+<li>1.1 项目背景</li>
+<li>1.2 研究意义</li>
+<li>1.3 整体创新点</li>
+<li>1.4 系统目标</li>
+</ul>
+</li>
+<li>
+<p>第二章 系统架构设计</p>
+<ul>
+<li>2.1 整体架构</li>
+<li>2.2 模块划分</li>
+<li>2.3 数据流设计</li>
+<li>2.4 技术选型</li>
+</ul>
+</li>
+<li>
+<p>第三章 模块详细设计</p>
+<ul>
+<li>3.1 组员1：数据接入与标准化模块</li>
+<li>3.2 组员2：无效问卷筛查模块</li>
+<li>3.3 组员3：样本量计算模块</li>
+<li>3.4 组员4：量表信度分析模块</li>
+<li>3.5 组员5：综合报告生成模块</li>
+</ul>
+</li>
+<li>
+<p>第四章 系统集成与测试</p>
+<ul>
+<li>4.1 模块集成方案</li>
+<li>4.2 功能测试结果</li>
+<li>4.3 兼容性验证</li>
+</ul>
+</li>
+<li>
+<p>第五章 总结与展望</p>
+<ul>
+<li>5.1 系统整体总结</li>
+<li>5.2 问题反思</li>
+<li>5.3 后续优化方案</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="第一章-项目概述">第一章 项目概述</h2>
+<h3 id="11-项目背景">1.1 项目背景</h3>
+<h4 id="111-现实需求">1.1.1 现实需求</h4>
+<p>在抽样技术课程实践和社会调查研究中，问卷数据处理是一项耗时且易出错的工作。传统处理方式存在以下问题：</p>
+<p><strong>（1）数据处理效率低下</strong></p>
+<p>问卷星等平台导出的原始数据往往包含大量元信息（答卷编号、提交时间、IP地址等），需要人工筛选题目列进行后续分析。一份包含50道题目、500份问卷的数据，仅数据清洗就可能耗费2-3小时。</p>
+<p><strong>（2）无效问卷识别主观性强</strong></p>
+<p>传统无效问卷筛选主要依赖人工判断，缺乏统一标准。研究者可能因&quot;作答时间过短&quot;、&quot;选项过于集中&quot;等主观印象剔除问卷，但缺乏量化依据，导致筛选结果不可复现。</p>
+<p><strong>（3）统计分析工具分散</strong></p>
+<p>样本量计算、信度检验、描述性统计、图表生成等功能分散在不同软件中（SPSS、Excel、R等），研究者需要在多个工具间切换，数据格式转换繁琐。</p>
+<p><strong>（4）报告撰写重复劳动</strong></p>
+<p>每道题目的统计描述、图表绘制、分析文字撰写存在大量重复工作，且不同研究者的报告格式、表述风格差异较大。</p>
+<h4 id="112-课程教学需求">1.1.2 课程教学需求</h4>
+<p>抽样技术课程要求学生掌握：</p>
+<ul>
+<li>样本量计算原理与公式推导</li>
+<li>非抽样误差的识别与控制</li>
+<li>无回答误差的评估方法</li>
+<li>数据质量控制技术</li>
+</ul>
+<p>本项目将理论知识转化为可操作的系统工具，实现&quot;学以致用&quot;的教学目标。</p>
+<h3 id="12-研究意义">1.2 研究意义</h3>
+<h4 id="121-理论意义">1.2.1 理论意义</h4>
+<p><strong>（1）非抽样误差量化研究</strong></p>
+<p>系统将非抽样误差细分为四类：</p>
+<ul>
+<li>覆盖误差（未覆盖目标总体）</li>
+<li>抽样误差（随机抽样固有误差）</li>
+<li>无回答误差（样本缺失导致）</li>
+<li>计量误差（测量工具或回答偏差）</li>
+</ul>
+<p>通过量化各类误差贡献率，为抽样理论提供实证支撑。</p>
+<p><strong>（2）数据质量控制框架</strong></p>
+<p>建立&quot;数据接入→标准化→无效筛查→清洗→分析&quot;的完整质量控制流程，形成可复用的数据处理范式。</p>
+<p><strong>（3）样本量计算模型</strong></p>
+<p>实现无限总体公式与有限总体校正的自动切换，考虑无效问卷缓冲，为抽样设计提供决策支持。</p>
+<h4 id="122-实践意义">1.2.2 实践意义</h4>
+<p><strong>（1）提升数据处理效率</strong></p>
+<p>系统可在5分钟内完成500份问卷的完整处理流程，效率提升约20倍。</p>
+<p><strong>（2）标准化研究流程</strong></p>
+<p>统一的数据处理标准和报告格式，提高研究结果的可比性和可复现性。</p>
+<p><strong>（3）降低技术门槛</strong></p>
+<p>Web界面设计使非编程背景的研究者也能使用专业统计功能。</p>
+<p><strong>（4）教学辅助工具</strong></p>
+<p>为抽样技术课程提供实践平台，学生可通过操作理解抽象的统计概念。</p>
+<h3 id="13-整体创新点">1.3 整体创新点</h3>
+<h4 id="创新点一智能题型识别">创新点一：智能题型识别</h4>
+<p>系统自动识别单选题、多选题、量表题三种题型：</p>
+<table>
+<thead>
+<tr>
+<th>识别规则</th>
+<th>单选题</th>
+<th>多选题</th>
+<th>量表题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据特征</td>
+<td>选项数≤8，无分隔符</td>
+<td>含逗号/分号分隔</td>
+<td>数值范围1-5或1-7</td>
+</tr>
+<tr>
+<td>处理方式</td>
+<td>频数统计+饼图</td>
+<td>选项拆分统计</td>
+<td>均值+信度分析</td>
+</tr>
+</tbody>
+</table>
+<h4 id="创新点二多维无效问卷筛查">创新点二：多维无效问卷筛查</h4>
+<p>建立四维筛查指标体系：</p>
+<pre><code>无效问卷判定 = f(作答时长, 缺答率, 答案一致性, 内容有效性)
+</code></pre>
+<ul>
+<li><strong>时间维度</strong>：作答时长 &lt; 题目数×2秒 或 &lt; 45秒</li>
+<li><strong>完整维度</strong>：缺答率 ≥ 40%</li>
+<li><strong>一致性维度</strong>：统一答案 或 同一选项占比≥90%且熵≤0.75</li>
+<li><strong>内容维度</strong>：无意义乱填占比 ≥ 60%</li>
+</ul>
+<h4 id="创新点三自适应样本量计算">创新点三：自适应样本量计算</h4>
+<pre><code class="language-python"><span class="hljs-comment"># 无限总体公式</span>
+n₀ = (Z² × p × (<span class="hljs-number">1</span>-p)) / e²
+
+<span class="hljs-comment"># 有限总体校正（当 n₀ &gt; 5%N 时启用）</span>
+n = n₀ / (<span class="hljs-number">1</span> + (n₀-<span class="hljs-number">1</span>)/N)
+
+<span class="hljs-comment"># 实际建议发放量（含30%无效缓冲）</span>
+建议量 = ⌈n × <span class="hljs-number">1.3</span>⌉
+</code></pre>
+<p>系统自动判断是否需要有限总体校正，并给出达标判断。</p>
+<h4 id="创新点四批量图表标准化文案">创新点四：批量图表+标准化文案</h4>
+<ul>
+<li><strong>图表自适应</strong>：选项过多自动合并&quot;其他&quot;，标签过小自动隐藏</li>
+<li><strong>文案自动生成</strong>：根据统计结果生成符合学术规范的分析文字</li>
+<li><strong>多格式导出</strong>：Markdown/JSON/CSV/Excel四种格式一键导出</li>
+</ul>
+<h4 id="创新点五ai辅助分析可选">创新点五：AI辅助分析（可选）</h4>
+<p>支持DeepSeek、通义千问、豆包等大模型接口，将统计量转化为文字分析报告，实现&quot;人机协作&quot;的研究模式。</p>
+<h3 id="14-系统目标">1.4 系统目标</h3>
+<h4 id="主要目标">主要目标</h4>
+<ol>
+<li><strong>数据处理自动化</strong>：实现从原始数据到分析报告的一键处理</li>
+<li><strong>质量控制标准化</strong>：建立可量化、可复现的无效问卷筛选标准</li>
+<li><strong>统计功能集成化</strong>：整合样本量计算、信度检验、描述性统计等核心功能</li>
+<li><strong>报告生成规范化</strong>：自动生成符合学术规范的统计报告</li>
+</ol>
+<h4 id="性能指标">性能指标</h4>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>目标值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据处理速度</td>
+<td>≥100份/分钟</td>
+</tr>
+<tr>
+<td>无效识别准确率</td>
+<td>≥85%</td>
+</tr>
+<tr>
+<td>图表生成成功率</td>
+<td>≥95%</td>
+</tr>
+<tr>
+<td>系统响应时间</td>
+<td>≤3秒</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="第二章-系统架构设计">第二章 系统架构设计</h2>
+<h3 id="21-整体架构">2.1 整体架构</h3>
+<p>系统采用分层架构设计：</p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    表现层 (Presentation)                     │
+│         Streamlit Web界面 / 命令行界面 / API接口              │
+├─────────────────────────────────────────────────────────────┤
+│                    业务层 (Business)                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐       │
+│  │样本量计算│ │无效筛查  │ │量表分析  │ │报告生成  │       │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘       │
+├─────────────────────────────────────────────────────────────┤
+│                    数据层 (Data)                             │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐       │
+│  │数据接入  │ │标准化    │ │字段识别  │ │结果导出  │       │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘       │
+├─────────────────────────────────────────────────────────────┤
+│                    基础层 (Infrastructure)                   │
+│         Pandas / NumPy / Matplotlib / Requests               │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="22-模块划分">2.2 模块划分</h3>
+<table>
+<thead>
+<tr>
+<th>模块编号</th>
+<th>模块名称</th>
+<th>负责组员</th>
+<th>核心功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>数据接入与标准化</td>
+<td>组员1</td>
+<td>文件读取、格式转换、字段标准化</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>无效问卷筛查</td>
+<td>组员2</td>
+<td>四维筛查、误差统计、日志记录</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>样本量计算</td>
+<td>组员3</td>
+<td>公式计算、有限总体校正、达标判断</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>量表信度分析</td>
+<td>组员4</td>
+<td>克隆巴赫α、维度统计、分组对比</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>综合报告生成</td>
+<td>组员5</td>
+<td>图表生成、文案撰写、多格式导出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-数据流设计">2.3 数据流设计</h3>
+<pre><code>┌─────────────┐
+│  原始数据   │  Excel/CSV
+│  (Raw Data) │
+└──────┬──────┘
+       │ M1: 数据接入
+       ↓
+┌─────────────┐
+│  标准化数据 │  统一列名、空值处理
+│ (Standard)  │
+└──────┬──────┘
+       │ M2: 无效筛查
+       ↓
+┌─────────────┐
+│  有效样本   │  剔除无效问卷
+│  (Valid)    │
+└──────┬──────┘
+       │ M3/M4: 统计分析
+       ↓
+┌─────────────┐
+│  统计结果   │  频数、均值、信度
+│ (Statistics)│
+└──────┬──────┘
+       │ M5: 报告生成
+       ↓
+┌─────────────┐
+│  分析报告   │  图表+文字+数据
+│  (Report)   │
+└─────────────┘
+</code></pre>
+<h3 id="24-技术选型">2.4 技术选型</h3>
+<table>
+<thead>
+<tr>
+<th>技术层</th>
+<th>技术选型</th>
+<th>选型理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开发语言</td>
+<td>Python 3.10+</td>
+<td>丰富的数据分析库生态</td>
+</tr>
+<tr>
+<td>数据处理</td>
+<td>Pandas, NumPy</td>
+<td>高效的数据结构和计算能力</td>
+</tr>
+<tr>
+<td>可视化</td>
+<td>Matplotlib</td>
+<td>灵活的图表定制能力</td>
+</tr>
+<tr>
+<td>Web框架</td>
+<td>Streamlit</td>
+<td>快速构建数据应用界面</td>
+</tr>
+<tr>
+<td>Excel处理</td>
+<td>openpyxl</td>
+<td>读写Excel文件</td>
+</tr>
+<tr>
+<td>AI接口</td>
+<td>Requests</td>
+<td>HTTP请求调用大模型API</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="第三章-模块详细设计">第三章 模块详细设计</h2>
+<h3 id="31-组员1数据接入与标准化模块">3.1 组员1：数据接入与标准化模块</h3>
+<h4 id="311-功能概述">3.1.1 功能概述</h4>
+<p>负责问卷数据的读取、格式转换和标准化处理，为后续分析提供统一的数据结构。</p>
+<h4 id="312-核心功能">3.1.2 核心功能</h4>
+<p><strong>（1）多格式数据读取</strong></p>
+<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">load_data</span>(<span class="hljs-params">file_path: <span class="hljs-built_in">str</span> | Path</span>) -&gt; <span class="hljs-type">Tuple</span>[pd.DataFrame, <span class="hljs-type">Dict</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">str</span>]]:
+    <span class="hljs-string">&quot;&quot;&quot;
+    支持：.csv, .xlsx, .xls, .xlsm
+    CSV编码自动识别：utf-8-sig, utf-8, gbk, gb18030
+    &quot;&quot;&quot;</span>
+</code></pre>
+<p><strong>（2）列名标准化</strong></p>
+<ul>
+<li>去除空白字符</li>
+<li>处理重复列名（自动添加后缀）</li>
+<li>处理未命名列（自动编号）</li>
+</ul>
+<p><strong>（3）字段分类识别</strong></p>
+<pre><code class="language-python">META_KEYWORDS = (
+    <span class="hljs-string">&quot;答卷编号&quot;</span>, <span class="hljs-string">&quot;提交时间&quot;</span>, <span class="hljs-string">&quot;所用时间&quot;</span>, <span class="hljs-string">&quot;来源&quot;</span>, <span class="hljs-string">&quot;IP&quot;</span>,
+    <span class="hljs-string">&quot;省份&quot;</span>, <span class="hljs-string">&quot;城市&quot;</span>, <span class="hljs-string">&quot;设备&quot;</span>, <span class="hljs-string">&quot;浏览器&quot;</span>, <span class="hljs-string">&quot;昵称&quot;</span>, <span class="hljs-string">&quot;姓名&quot;</span>, ...
+)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">infer_columns</span>(<span class="hljs-params">data: pd.DataFrame</span>) -&gt; <span class="hljs-type">Dict</span>[<span class="hljs-built_in">str</span>, <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>]]:
+    <span class="hljs-string">&quot;&quot;&quot;
+    返回：{
+        &quot;metadata_columns&quot;: [...],  # 元信息列
+        &quot;answer_columns&quot;: [...]     # 题目列
+    }
+    &quot;&quot;&quot;</span>
+</code></pre>
+<p><strong>（4）数据质量概览</strong></p>
+<p>生成DataProfile数据类，包含：</p>
+<ul>
+<li>文件基本信息</li>
+<li>行列数量</li>
+<li>缺失情况</li>
+<li>重复行数</li>
+<li>质量警告</li>
+</ul>
+<h4 id="313-输出文件">3.1.3 输出文件</h4>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raw_data_snapshot.csv</td>
+<td>原始数据快照</td>
+</tr>
+<tr>
+<td>standard_data.csv</td>
+<td>标准化后数据</td>
+</tr>
+<tr>
+<td>data_profile.csv</td>
+<td>数据质量概览</td>
+</tr>
+<tr>
+<td>column_info.json</td>
+<td>字段分类结果</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-组员2无效问卷筛查模块">3.2 组员2：无效问卷筛查模块</h3>
+<h4 id="321-功能概述">3.2.1 功能概述</h4>
+<p>基于多维指标对问卷进行质量筛查，识别并剔除无效答卷，计算各类误差率。</p>
+<h4 id="322-筛查指标体系">3.2.2 筛查指标体系</h4>
+<p><strong>指标一：作答时长</strong></p>
+<pre><code class="language-python"><span class="hljs-comment"># 动态阈值计算</span>
+duration_threshold = <span class="hljs-built_in">max</span>(
+    min_duration_seconds,           <span class="hljs-comment"># 最小45秒</span>
+    answer_count × seconds_per_answer  <span class="hljs-comment"># 题目数×2秒</span>
+)
+
+<span class="hljs-comment"># 或基于数据分布自适应</span>
+duration_threshold = <span class="hljs-built_in">max</span>(base, q10×<span class="hljs-number">0.8</span>, q25×<span class="hljs-number">0.6</span>)
+</code></pre>
+<p><strong>指标二：缺答率</strong></p>
+<pre><code class="language-python">missing_ratio = missing_count / total_questions
+<span class="hljs-keyword">if</span> missing_ratio &gt;= <span class="hljs-number">0.40</span>:  <span class="hljs-comment"># 缺答超过40%</span>
+    reasons.append(<span class="hljs-string">&quot;大面积缺答&quot;</span>)
+</code></pre>
+<p><strong>指标三：答案一致性</strong></p>
+<pre><code class="language-python"><span class="hljs-comment"># 统一答案检测</span>
+<span class="hljs-keyword">if</span> unique_answers == <span class="hljs-number">1</span>:
+    reasons.append(<span class="hljs-string">&quot;统一答案&quot;</span>)
+
+<span class="hljs-comment"># 疑似直线作答检测</span>
+same_ratio = <span class="hljs-built_in">max</span>(freq) / total
+entropy = -Σ(p × log₂(p))
+<span class="hljs-keyword">if</span> same_ratio &gt;= <span class="hljs-number">0.90</span> <span class="hljs-keyword">and</span> entropy &lt;= <span class="hljs-number">0.75</span>:
+    reasons.append(<span class="hljs-string">&quot;疑似直线作答&quot;</span>)
+</code></pre>
+<p><strong>指标四：内容有效性</strong></p>
+<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">_looks_like_nonsense</span>(<span class="hljs-params">text: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:
+    <span class="hljs-string">&quot;&quot;&quot;
+    识别无意义内容：
+    - 纯重复字符：aaaa, 1111
+    - 纯字母数字混合：abc123
+    - 无实际语义符号
+    &quot;&quot;&quot;</span>
+</code></pre>
+<h4 id="323-误差统计">3.2.3 误差统计</h4>
+<pre><code class="language-python"><span class="hljs-meta">@dataclass</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ScreeningResult</span>:
+    total_rows: <span class="hljs-built_in">int</span>           <span class="hljs-comment"># 总问卷数</span>
+    valid_rows: <span class="hljs-built_in">int</span>           <span class="hljs-comment"># 有效问卷数</span>
+    invalid_rows: <span class="hljs-built_in">int</span>         <span class="hljs-comment"># 无效问卷数</span>
+    valid_rate: <span class="hljs-built_in">float</span>         <span class="hljs-comment"># 有效率</span>
+    invalid_rate: <span class="hljs-built_in">float</span>       <span class="hljs-comment"># 无效率</span>
+    non_sampling_error_rate: <span class="hljs-built_in">float</span>    <span class="hljs-comment"># 非抽样误差率</span>
+    nonresponse_error_rate: <span class="hljs-built_in">float</span>     <span class="hljs-comment"># 无回答误差率</span>
+    reason_breakdown: <span class="hljs-type">Dict</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">int</span>]  <span class="hljs-comment"># 剔除原因分布</span>
+</code></pre>
+<h4 id="324-输出文件">3.2.4 输出文件</h4>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cleaned_data.csv</td>
+<td>有效问卷数据</td>
+</tr>
+<tr>
+<td>invalid_data.csv</td>
+<td>无效问卷数据</td>
+</tr>
+<tr>
+<td>filter_log.csv</td>
+<td>逐条筛查日志</td>
+</tr>
+<tr>
+<td>error_report.csv</td>
+<td>误差率汇总</td>
+</tr>
+<tr>
+<td>reason_statistics.csv</td>
+<td>剔除原因统计</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-组员3样本量计算模块">3.3 组员3：样本量计算模块</h3>
+<h4 id="331-功能概述">3.3.1 功能概述</h4>
+<p>根据置信度、允许误差、总体规模等参数，计算理论最小样本量，并判断实际样本是否达标。</p>
+<h4 id="332-计算公式">3.3.2 计算公式</h4>
+<p><strong>（1）无限总体样本量公式</strong></p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><msup><mi>Z</mi><mn>2</mn></msup><mo>×</mo><mi>p</mi><mo>×</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><msup><mi>e</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">n_0 = \frac{Z^2 \times p \times (1-p)}{e^2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span>：置信水平对应的Z值（95%→1.96，99%→2.576）</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>：预期比例（最保守取0.5）</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span>：允许误差</li>
+</ul>
+<p><strong>（2）有限总体校正</strong></p>
+<p>当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>&gt;</mo><mn>5</mn><mi mathvariant="normal">%</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">n_0 &gt; 5\%N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">5%</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 时启用：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><msub><mi>n</mi><mn>0</mn></msub><mrow><mn>1</mn><mo>+</mo><mfrac><mrow><msub><mi>n</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn></mrow><mi>N</mi></mfrac></mrow></mfrac></mrow><annotation encoding="application/x-tex">n = \frac{n_0}{1 + \frac{n_0 - 1}{N}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2038em;vertical-align:-1.0962em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.2488em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8612em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0962em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><strong>（3）建议发放量</strong></p>
+<p>考虑约30%无效问卷缓冲：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>建议量</mtext><mo>=</mo><mo stretchy="false">⌈</mo><mi>n</mi><mo>×</mo><mn>1.3</mn><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">建议量 = \lceil n \times 1.3 \rceil
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">建议量</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1.3</span><span class="mclose">⌉</span></span></span></span></span></p>
+<h4 id="333-核心函数">3.3.3 核心函数</h4>
+<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_sample</span>(<span class="hljs-params">
+    confidence: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.95</span>,      <span class="hljs-comment"># 置信度</span>
+    margin_error: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.05</span>,   <span class="hljs-comment"># 允许误差</span>
+    p: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.5</span>,               <span class="hljs-comment"># 预期比例</span>
+    population: <span class="hljs-built_in">int</span> = <span class="hljs-number">10000</span>,      <span class="hljs-comment"># 总体数量</span>
+    actual_sample: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>,       <span class="hljs-comment"># 实际样本数</span>
+</span>) -&gt; <span class="hljs-built_in">dict</span>:
+    <span class="hljs-string">&quot;&quot;&quot;
+    返回：
+    - min_sample: 理论最小样本量
+    - suggested: 建议发放量
+    - is_sufficient: 是否达标
+    - gap: 差距（若不足）
+    &quot;&quot;&quot;</span>
+</code></pre>
+<h4 id="334-置信度与z值对照">3.3.4 置信度与Z值对照</h4>
+<table>
+<thead>
+<tr>
+<th>置信度</th>
+<th>Z值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90%</td>
+<td>1.645</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>1.96</td>
+</tr>
+<tr>
+<td>99%</td>
+<td>2.576</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-组员4量表信度分析模块">3.4 组员4：量表信度分析模块</h3>
+<h4 id="341-功能概述">3.4.1 功能概述</h4>
+<p>针对李克特量表数据，计算克隆巴赫α信度系数，进行维度统计和分组对比分析。</p>
+<h4 id="342-克隆巴赫α系数">3.4.2 克隆巴赫α系数</h4>
+<p><strong>计算公式</strong>：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>α</mi><mo>=</mo><mfrac><mrow><mi>k</mi><mo>×</mo><mover accent="true"><mi>r</mi><mo>ˉ</mo></mover></mrow><mrow><mn>1</mn><mo>+</mo><mo stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mover accent="true"><mi>r</mi><mo>ˉ</mo></mover></mrow></mfrac></mrow><annotation encoding="application/x-tex">\alpha = \frac{k \times \bar{r}}{1 + (k-1) \times \bar{r}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3074em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>：题项数量</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>r</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{r}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span>：题项间平均相关系数</li>
+</ul>
+<p><strong>信度评价标准</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>α值范围</th>
+<th>评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>α ≥ 0.9</td>
+<td>信度极佳</td>
+</tr>
+<tr>
+<td>0.8 ≤ α &lt; 0.9</td>
+<td>信度良好</td>
+</tr>
+<tr>
+<td>0.7 ≤ α &lt; 0.8</td>
+<td>信度可接受</td>
+</tr>
+<tr>
+<td>α &lt; 0.7</td>
+<td>信度偏低</td>
+</tr>
+</tbody>
+</table>
+<h4 id="343-核心功能">3.4.3 核心功能</h4>
+<p><strong>（1）题项统计</strong></p>
+<pre><code class="language-python">item_statistics = {
+    <span class="hljs-string">&quot;题项编号&quot;</span>: <span class="hljs-string">&quot;Q1&quot;</span>,
+    <span class="hljs-string">&quot;平均分&quot;</span>: <span class="hljs-number">3.85</span>,
+    <span class="hljs-string">&quot;标准差&quot;</span>: <span class="hljs-number">0.92</span>,
+    <span class="hljs-string">&quot;方差&quot;</span>: <span class="hljs-number">0.85</span>,
+    <span class="hljs-string">&quot;删除本题后α系数&quot;</span>: <span class="hljs-number">0.82</span>  <span class="hljs-comment"># 用于识别可删除题项</span>
+}
+</code></pre>
+<p><strong>（2）维度分析</strong></p>
+<p>支持用户自定义维度分组：</p>
+<pre><code>维度名称=Q1,Q2,Q3
+服务质量=Q4,Q5,Q6
+</code></pre>
+<p><strong>（3）反向题处理</strong></p>
+<ul>
+<li>自动识别：均值最低的20%题项</li>
+<li>手动补充：用户指定反向题</li>
+<li>自动反转：6 - 原始得分（针对5点量表）</li>
+</ul>
+<p><strong>（4）分组对比</strong></p>
+<p>按性别、组别等分类变量进行均值对比和可视化。</p>
+<h4 id="344-输出内容">3.4.4 输出内容</h4>
+<table>
+<thead>
+<tr>
+<th>输出项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>题项统计表</td>
+<td>各题均值、标准差、删除后α</td>
+</tr>
+<tr>
+<td>整体信度</td>
+<td>克隆巴赫α系数及评价</td>
+</tr>
+<tr>
+<td>维度统计</td>
+<td>各维度均值、标准差、信度</td>
+</tr>
+<tr>
+<td>分组对比</td>
+<td>各组在各题/维度的均值差异</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-组员5综合报告生成模块">3.5 组员5：综合报告生成模块</h3>
+<h4 id="351-功能概述">3.5.1 功能概述</h4>
+<p>整合所有模块输出，批量生成图表，自动撰写分析文案，导出多格式报告。</p>
+<h4 id="352-图表生成系统">3.5.2 图表生成系统</h4>
+<p><strong>（1）单选题图表</strong></p>
+<table>
+<thead>
+<tr>
+<th>图表类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>饼图</td>
+<td>展示选项占比，环形设计</td>
+</tr>
+<tr>
+<td>柱状图</td>
+<td>展示频数分布，支持横向/纵向</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（2）多选题图表</strong></p>
+<ul>
+<li>水平柱状图</li>
+<li>显示各选项选择次数和占比</li>
+</ul>
+<p><strong>（3）量表题图表</strong></p>
+<ul>
+<li>直方图：展示得分分布</li>
+<li>均值标记线</li>
+<li>自动适配5点/7点量表</li>
+</ul>
+<p><strong>（4）图表样式自适应</strong></p>
+<pre><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ChartConfig</span>:
+    width: <span class="hljs-built_in">int</span> = <span class="hljs-number">10</span>           <span class="hljs-comment"># 图表宽度</span>
+    height: <span class="hljs-built_in">int</span> = <span class="hljs-number">6</span>           <span class="hljs-comment"># 图表高度</span>
+    dpi: <span class="hljs-built_in">int</span> = <span class="hljs-number">150</span>            <span class="hljs-comment"># 分辨率</span>
+    max_categories: <span class="hljs-built_in">int</span> = <span class="hljs-number">10</span>  <span class="hljs-comment"># 最大显示类别数</span>
+    color_scheme: <span class="hljs-built_in">str</span>         <span class="hljs-comment"># 配色方案</span>
+</code></pre>
+<ul>
+<li>选项过多自动合并&quot;其他&quot;</li>
+<li>标签过小自动隐藏</li>
+<li>中文字体自动适配</li>
+</ul>
+<h4 id="353-标准化分析文案">3.5.3 标准化分析文案</h4>
+<p><strong>单选题文案模板</strong>：</p>
+<pre><code>本题共收到N份有效回答，缺失M份（缺失率X%）。
+从频数分布来看，[选项A]选择人数最多，占比Y%，
+表明该选项具有明显集中趋势/分布较为均衡。
+均值=X.XX，标准差=X.XX，说明回答离散程度较低/中等/较高。
+</code></pre>
+<p><strong>量表题文案模板</strong>：</p>
+<pre><code>本题为量表题，有效回答N份，缺失M份（缺失率X%）。
+均值=X.XXX，中位数=X.XXX，标准差=X.XXX。
+整体偏向正向（同意）/中立/负向（不同意），
+数据离散程度较低/中等/较高。
+</code></pre>
+<h4 id="354-多格式报告导出">3.5.4 多格式报告导出</h4>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>文件</th>
+<th>内容</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markdown</td>
+<td>.md</td>
+<td>完整报告</td>
+<td>课程论文</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>.json</td>
+<td>结构化数据</td>
+<td>程序调用</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>.csv</td>
+<td>统计汇总表</td>
+<td>Excel分析</td>
+</tr>
+<tr>
+<td>Excel</td>
+<td>.xlsx</td>
+<td>多Sheet报告</td>
+<td>正式报告</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Excel报告结构</strong>：</p>
+<ul>
+<li>Sheet1：报告摘要</li>
+<li>Sheet2：单选题统计</li>
+<li>Sheet3：多选题统计</li>
+<li>Sheet4：量表维度统计</li>
+<li>Sheet5：全部统计汇总</li>
+</ul>
+<h4 id="355-ai辅助分析可选">3.5.5 AI辅助分析（可选）</h4>
+<p>支持调用大模型API生成文字分析报告：</p>
+<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_ai_analysis</span>(<span class="hljs-params">
+    report: <span class="hljs-type">Dict</span>,
+    api_key: <span class="hljs-built_in">str</span>,
+    base_url: <span class="hljs-built_in">str</span>,
+    model: <span class="hljs-built_in">str</span>,
+    user_requirement: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;&quot;</span>,
+</span>) -&gt; <span class="hljs-type">Tuple</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">dict</span>]:
+    <span class="hljs-string">&quot;&quot;&quot;
+    支持服务商：
+    - DeepSeek
+    - 通义千问（阿里百炼）
+    - 豆包（火山方舟）
+    - 自定义OpenAI兼容接口
+    &quot;&quot;&quot;</span>
+</code></pre>
+<hr>
+<h2 id="第四章-系统集成与测试">第四章 系统集成与测试</h2>
+<h3 id="41-模块集成方案">4.1 模块集成方案</h3>
+<h4 id="411-统一入口">4.1.1 统一入口</h4>
+<p><strong>命令行模式</strong>：</p>
+<pre><code class="language-bash">python integrated_reporting_system.py &lt;问卷文件&gt; -o &lt;输出目录&gt;
+</code></pre>
+<p><strong>Web界面模式</strong>：</p>
+<pre><code class="language-bash">streamlit run integrated_platform.py
+</code></pre>
+<h4 id="412-模块依赖关系">4.1.2 模块依赖关系</h4>
+<pre><code>integrated_platform.py (统一界面)
+    │
+    ├── questionnaire_platform_core.py (核心功能)
+    │       ├── process_questionnaire()
+    │       ├── calculate_sample()
+    │       └── generate_ai_analysis()
+    │
+    ├── integrated_reporting_system.py (报告生成)
+    │       ├── ComprehensiveAnalyzer
+    │       ├── ChartGenerator
+    │       └── ReportExporter
+    │
+    └── group2_invalid_questionnaire_screening1.py (数据处理)
+            ├── load_data()
+            ├── normalize_dataframe()
+            ├── screen_questionnaires()
+            └── clean_valid_data()
+</code></pre>
+<h3 id="42-功能测试结果">4.2 功能测试结果</h3>
+<h4 id="421-测试环境">4.2.1 测试环境</h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作系统</td>
+<td>Windows 10/11</td>
+</tr>
+<tr>
+<td>Python版本</td>
+<td>3.10+</td>
+</tr>
+<tr>
+<td>测试数据</td>
+<td>模拟问卷数据（100份）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="422-测试用例与结果">4.2.2 测试用例与结果</h4>
+<table>
+<thead>
+<tr>
+<th>测试项</th>
+<th>测试内容</th>
+<th>预期结果</th>
+<th>实际结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>模块导入</td>
+<td>全部成功</td>
+<td>✅ 通过</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>图表生成</td>
+<td>饼图/柱状图/直方图</td>
+<td>✅ 通过</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>数据处理</td>
+<td>标准化+筛查</td>
+<td>✅ 通过</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>综合分析</td>
+<td>批量分析+报告导出</td>
+<td>✅ 通过</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>样本计算</td>
+<td>公式计算+校正</td>
+<td>✅ 通过</td>
+</tr>
+</tbody>
+</table>
+<h4 id="423-性能测试">4.2.3 性能测试</h4>
+<table>
+<thead>
+<tr>
+<th>数据规模</th>
+<th>处理时间</th>
+<th>内存占用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100份问卷</td>
+<td>&lt;5秒</td>
+<td>&lt;200MB</td>
+</tr>
+<tr>
+<td>500份问卷</td>
+<td>&lt;30秒</td>
+<td>&lt;500MB</td>
+</tr>
+<tr>
+<td>1000份问卷</td>
+<td>&lt;60秒</td>
+<td>&lt;800MB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-兼容性验证">4.3 兼容性验证</h3>
+<h4 id="431-已解决的兼容性问题">4.3.1 已解决的兼容性问题</h4>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSV编码不一致</td>
+<td>自动尝试utf-8-sig/utf-8/gbk/gb18030</td>
+</tr>
+<tr>
+<td>中文字体缺失</td>
+<td>自动检测系统可用中文字体</td>
+</tr>
+<tr>
+<td>Excel列名重复</td>
+<td>自动添加数字后缀</td>
+</tr>
+<tr>
+<td>空值表示不统一</td>
+<td>统一处理NaN/None/空字符串/NULL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="432-支持的输入格式">4.3.2 支持的输入格式</h4>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>扩展名</th>
+<th>编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Excel</td>
+<td>.xlsx, .xls, .xlsm</td>
+<td>自动</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>.csv</td>
+<td>utf-8-sig/utf-8/gbk</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="第五章-总结与展望">第五章 总结与展望</h2>
+<h3 id="51-系统整体总结">5.1 系统整体总结</h3>
+<h4 id="511-完成的核心功能">5.1.1 完成的核心功能</h4>
+<p><strong>✅ 数据处理全流程自动化</strong></p>
+<p>从原始问卷数据到分析报告的一键处理，实现了：</p>
+<ul>
+<li>数据接入与标准化</li>
+<li>无效问卷智能筛查</li>
+<li>统计分析自动化</li>
+<li>图表批量生成</li>
+<li>报告多格式导出</li>
+</ul>
+<p><strong>✅ 抽样理论实践结合</strong></p>
+<p>将课程理论知识转化为可操作工具：</p>
+<ul>
+<li>样本量计算公式实现</li>
+<li>非抽样误差量化统计</li>
+<li>无回答误差评估</li>
+<li>数据质量控制流程</li>
+</ul>
+<p><strong>✅ 用户友好的交互设计</strong></p>
+<ul>
+<li>Web界面直观易用</li>
+<li>参数配置灵活</li>
+<li>实时结果预览</li>
+<li>详细使用说明</li>
+</ul>
+<h4 id="512-系统特色亮点">5.1.2 系统特色亮点</h4>
+<table>
+<thead>
+<tr>
+<th>特色</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能识别</td>
+<td>自动识别题型、反向题、元信息列</td>
+</tr>
+<tr>
+<td>自适应设计</td>
+<td>图表样式、阈值参数自动调整</td>
+</tr>
+<tr>
+<td>标准化输出</td>
+<td>统一的报告格式和分析文案</td>
+</tr>
+<tr>
+<td>模块化架构</td>
+<td>各模块独立可复用，便于扩展</td>
+</tr>
+<tr>
+<td>可扩展性</td>
+<td>支持自定义配置、AI接口扩展</td>
+</tr>
+</tbody>
+</table>
+<h4 id="513-项目成果统计">5.1.3 项目成果统计</h4>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码文件</td>
+<td>9个</td>
+</tr>
+<tr>
+<td>代码总行数</td>
+<td>约3500行</td>
+</tr>
+<tr>
+<td>核心函数</td>
+<td>50+</td>
+</tr>
+<tr>
+<td>支持图表类型</td>
+<td>6种</td>
+</tr>
+<tr>
+<td>报告导出格式</td>
+<td>4种</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-问题反思">5.2 问题反思</h3>
+<h4 id="521-开发过程中的问题">5.2.1 开发过程中的问题</h4>
+<p><strong>（1）模块接口协调</strong></p>
+<p>初期各模块独立开发，接口定义不统一，集成时出现数据格式不匹配问题。</p>
+<p><strong>解决</strong>：统一使用Pandas DataFrame作为数据交换格式，定义明确的数据类（DataClass）规范接口。</p>
+<p><strong>（2）中文字体问题</strong></p>
+<p>Matplotlib默认不支持中文，图表显示乱码。</p>
+<p><strong>解决</strong>：实现字体自动检测机制，优先使用SimHei、Microsoft YaHei等常见中文字体。</p>
+<p><strong>（3）异常处理不完善</strong></p>
+<p>部分边界情况未考虑，如空数据、全缺失列等导致程序崩溃。</p>
+<p><strong>解决</strong>：增加全面的输入验证和异常捕获，提供友好的错误提示。</p>
+<h4 id="522-现有局限性">5.2.2 现有局限性</h4>
+<table>
+<thead>
+<tr>
+<th>局限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>题型识别局限</td>
+<td>仅支持单选/多选/量表三种，不支持填空题智能分析</td>
+</tr>
+<tr>
+<td>筛查规则固定</td>
+<td>阈值参数可调，但筛查逻辑固定，不支持自定义规则</td>
+</tr>
+<tr>
+<td>图表定制有限</td>
+<td>图表样式预设，不支持用户深度定制</td>
+</tr>
+<tr>
+<td>无效识别准确率</td>
+<td>对&quot;认真乱填&quot;等复杂情况识别率有限</td>
+</tr>
+</tbody>
+</table>
+<h4 id="523-经验教训">5.2.3 经验教训</h4>
+<ol>
+<li><strong>前期设计重要性</strong>：应在开发前充分讨论接口规范，避免后期大量重构</li>
+<li><strong>测试驱动开发</strong>：应先编写测试用例，再实现功能，确保代码质量</li>
+<li><strong>文档同步更新</strong>：代码修改后应及时更新文档，避免文档与代码不一致</li>
+<li><strong>用户体验优先</strong>：技术实现应服务于用户体验，而非炫技</li>
+</ol>
+<h3 id="53-后续优化方案">5.3 后续优化方案</h3>
+<h4 id="531-短期优化1-2周">5.3.1 短期优化（1-2周）</h4>
+<p><strong>优化一：增强题型识别</strong></p>
+<pre><code class="language-python"><span class="hljs-comment"># 新增题型识别</span>
+- 填空题：文本长度分布分析
+- 矩阵题：多行多列结构识别
+- 排序题：数值序列检测
+</code></pre>
+<p><strong>优化二：自定义筛查规则</strong></p>
+<pre><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomScreeningRule</span>:
+    name: <span class="hljs-built_in">str</span>              <span class="hljs-comment"># 规则名称</span>
+    condition: <span class="hljs-type">Callable</span>    <span class="hljs-comment"># 判断函数</span>
+    weight: <span class="hljs-built_in">float</span>          <span class="hljs-comment"># 权重（用于综合评分）</span>
+    
+<span class="hljs-comment"># 支持用户自定义筛查规则并动态加载</span>
+</code></pre>
+<p><strong>优化三：图表交互增强</strong></p>
+<ul>
+<li>支持图表缩放、平移</li>
+<li>鼠标悬停显示详细数据</li>
+<li>图表导出为SVG/PDF矢量格式</li>
+</ul>
+<h4 id="532-中期优化1-2月">5.3.2 中期优化（1-2月）</h4>
+<p><strong>优化一：机器学习辅助筛查</strong></p>
+<pre><code class="language-python"><span class="hljs-comment"># 使用历史标注数据训练分类模型</span>
+<span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> RandomForestClassifier
+
+model.fit(features, labels)  <span class="hljs-comment"># features: 答题特征</span>
+                           <span class="hljs-comment"># labels: 有效/无效标注</span>
+</code></pre>
+<p>提升对复杂无效问卷的识别准确率。</p>
+<p><strong>优化二：多语言支持</strong></p>
+<ul>
+<li>英文界面选项</li>
+<li>分析文案多语言版本</li>
+<li>国际化字体适配</li>
+</ul>
+<p><strong>优化三：协作功能</strong></p>
+<ul>
+<li>多用户项目管理</li>
+<li>数据版本控制</li>
+<li>处理流程共享</li>
+</ul>
+<h4 id="533-长期规划3-6月">5.3.3 长期规划（3-6月）</h4>
+<p><strong>规划一：Web平台升级</strong></p>
+<ul>
+<li>从Streamlit迁移到Django/Flask</li>
+<li>用户认证与权限管理</li>
+<li>数据库存储（PostgreSQL）</li>
+<li>RESTful API接口</li>
+</ul>
+<p><strong>规划二：移动端支持</strong></p>
+<ul>
+<li>响应式Web设计</li>
+<li>移动端数据采集App</li>
+<li>实时数据同步</li>
+</ul>
+<p><strong>规划三：智能分析增强</strong></p>
+<ul>
+<li>自动生成研究结论</li>
+<li>异常数据预警</li>
+<li>抽样方案优化建议</li>
+</ul>
+<h4 id="534-优化优先级矩阵">5.3.4 优化优先级矩阵</h4>
+<table>
+<thead>
+<tr>
+<th>优化项</th>
+<th>重要性</th>
+<th>紧急性</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增强题型识别</td>
+<td>高</td>
+<td>高</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>自定义筛查规则</td>
+<td>高</td>
+<td>中</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>图表交互增强</td>
+<td>中</td>
+<td>高</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>机器学习辅助</td>
+<td>高</td>
+<td>低</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>多语言支持</td>
+<td>低</td>
+<td>低</td>
+<td>P3</td>
+</tr>
+<tr>
+<td>Web平台升级</td>
+<td>中</td>
+<td>低</td>
+<td>P3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="附录">附录</h2>
+<h3 id="附录a文件清单">附录A：文件清单</h3>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>功能</th>
+<th>代码行数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ai_client.py</td>
+<td>AI接口客户端</td>
+<td>150</td>
+</tr>
+<tr>
+<td>group2_invalid_questionnaire_screening.py</td>
+<td>无效筛查v1</td>
+<td>500</td>
+</tr>
+<tr>
+<td>group2_invalid_questionnaire_screening1.py</td>
+<td>无效筛查v2</td>
+<td>900</td>
+</tr>
+<tr>
+<td>questionnaire_platform_core.py</td>
+<td>平台核心功能</td>
+<td>280</td>
+</tr>
+<tr>
+<td>questionnaire_streamlit_app.py</td>
+<td>原Web界面</td>
+<td>200</td>
+</tr>
+<tr>
+<td><a href="http://xn--h6qv61annqkgh2vrvjn.py">量表独立工具.py</a></td>
+<td>量表分析工具</td>
+<td>195</td>
+</tr>
+<tr>
+<td>integrated_reporting_system.py</td>
+<td>综合报告系统</td>
+<td>1250</td>
+</tr>
+<tr>
+<td>integrated_platform.py</td>
+<td>整合平台界面</td>
+<td>510</td>
+</tr>
+<tr>
+<td>run_tests.py</td>
+<td>系统测试脚本</td>
+<td>315</td>
+</tr>
+</tbody>
+</table>
+<h3 id="附录b依赖库清单">附录B：依赖库清单</h3>
+<pre><code>pandas&gt;=1.5.0
+numpy&gt;=1.21.0
+matplotlib&gt;=3.5.0
+openpyxl&gt;=3.0.0
+streamlit&gt;=1.20.0
+requests&gt;=2.28.0
+Pillow&gt;=9.0.0
+reportlab&gt;=3.6.0
+python-docx&gt;=0.8.11
+scipy&gt;=1.7.0
+</code></pre>
+<h3 id="附录c使用示例">附录C：使用示例</h3>
+<p><strong>示例1：命令行完整处理</strong></p>
+<pre><code class="language-bash">python integrated_reporting_system.py questionnaire.xlsx -o output --chart-dpi 200 --color-scheme professional
+</code></pre>
+<p><strong>示例2：Web界面使用</strong></p>
+<pre><code class="language-bash">streamlit run integrated_platform.py
+</code></pre>
+<p>访问 <a href="http://localhost:8501">http://localhost:8501</a> 进行交互操作。</p>
+<p><strong>示例3：编程调用</strong></p>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> integrated_reporting_system <span class="hljs-keyword">import</span> integrate_all_modules, ReportExporter
+<span class="hljs-keyword">from</span> group2_invalid_questionnaire_screening1 <span class="hljs-keyword">import</span> process_file
+
+<span class="hljs-comment"># 处理问卷</span>
+result = process_file(<span class="hljs-string">&quot;questionnaire.xlsx&quot;</span>, output_dir=<span class="hljs-string">&quot;output&quot;</span>)
+
+<span class="hljs-comment"># 生成综合报告</span>
+report = integrate_all_modules(
+    data=result[<span class="hljs-string">&quot;cleaned_data&quot;</span>],
+    column_info=result[<span class="hljs-string">&quot;column_info&quot;</span>],
+    screening_result=result[<span class="hljs-string">&quot;screening_result&quot;</span>],
+    output_dir=<span class="hljs-string">&quot;output&quot;</span>
+)
+
+<span class="hljs-comment"># 导出报告</span>
+exporter = ReportExporter(report, output_dir=<span class="hljs-string">&quot;output&quot;</span>)
+exporter.export_all_formats()
+</code></pre>
+<hr>
+<h2 id="文档修订记录">文档修订记录</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>修订内容</th>
+<th>修订人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1.0</td>
+<td>2026-05-31</td>
+<td>初稿完成</td>
+<td>全体组员</td>
+</tr>
+<tr>
+<td>V2.0</td>
+<td>2026-06-02</td>
+<td>整合所有模块，完善文档</td>
+<td>全体组员</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>文档结束</strong></p>
+<p><em>本设计说明书由抽样技术课程项目组共同编写，如有疑问请联系各模块负责人。</em></p>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
