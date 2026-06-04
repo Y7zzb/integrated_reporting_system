@@ -15,13 +15,31 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-WORKSPACE_DIR = Path(r"C:\Users\派大星\PyCharmMiscProject")
-TEMP_DIR = Path(r"C:\Users\派大星\AppData\Local\Temp")
-DESKTOP_DIR = Path(r"C:\Users\派大星\Desktop")
+# ==========================================
+# 跨平台路径配置 - 确保云端运行
+# ==========================================
+try:
+    WORKSPACE_DIR = Path(__file__).resolve().parent
+except Exception:
+    WORKSPACE_DIR = Path.cwd()
 
-for p in (WORKSPACE_DIR, TEMP_DIR, DESKTOP_DIR):
-    if str(p) not in sys.path:
-        sys.path.insert(0, str(p))
+# 统一使用应用程序目录下的子目录
+TEMP_DIR = WORKSPACE_DIR / "temp_uploads"
+OUTPUT_DIR = WORKSPACE_DIR / "integrated_output"
+CHARTS_DIR = OUTPUT_DIR / "charts"
+
+# 确保所有目录存在
+for dir_path in [TEMP_DIR, OUTPUT_DIR, CHARTS_DIR]:
+    dir_path.mkdir(parents=True, exist_ok=True)
+
+# 添加路径
+if str(WORKSPACE_DIR) not in sys.path:
+    sys.path.insert(0, str(WORKSPACE_DIR))
+
+print(f"[INFO] Platform: {sys.platform}")
+print(f"[INFO] Workspace: {WORKSPACE_DIR}")
+print(f"[INFO] Temp Dir: {TEMP_DIR}")
+print(f"[INFO] Output Dir: {OUTPUT_DIR}")
 
 from questionnaire_platform_core import (
     AI_PROVIDER_PRESETS,
@@ -135,8 +153,7 @@ uploaded_file = st.file_uploader(
     help="支持问卷星导出的Excel和CSV格式"
 )
 
-default_output_dir = str(WORKSPACE_DIR / "integrated_output")
-output_dir = st.text_input("输出目录", value=default_output_dir)
+output_dir = st.text_input("输出目录", value=str(OUTPUT_DIR))
 
 col_btn1, col_btn2, col_btn3 = st.columns(3)
 
@@ -156,8 +173,9 @@ if process_basic or process_full:
     else:
         try:
             progress = st.progress(0, text="保存上传文件...")
-            temp_path = WORKSPACE_DIR / uploaded_file.name
+            temp_path = TEMP_DIR / uploaded_file.name
             temp_path.write_bytes(uploaded_file.getvalue())
+            print(f"[DEBUG] Uploaded file saved to: {temp_path}")
 
             progress.progress(10, text="正在处理问卷...")
 
@@ -202,7 +220,7 @@ if process_basic or process_full:
                     data=cleaned_df,
                     column_info=column_info,
                     config=chart_config,
-                    chart_output_dir=str(Path(output_dir) / "charts")
+                    chart_output_dir=str(CHARTS_DIR)
                 )
 
                 single_results, multi_results, likert_results = analyzer.analyze_all_questions()
@@ -219,11 +237,11 @@ if process_basic or process_full:
                     multiple_choice_results=multi_results,
                     likert_scale_results=likert_results,
                     overall_analysis="",
-                    chart_output_dir=str(Path(output_dir) / "charts"),
+                    chart_output_dir=str(CHARTS_DIR),
                 )
 
                 st.session_state["comprehensive_report"] = report
-                st.session_state["chart_output_dir"] = str(Path(output_dir) / "charts")
+                st.session_state["chart_output_dir"] = str(CHARTS_DIR)
 
                 progress.progress(70, text="正在保存图表...")
                 exporter = ReportExporter(report, output_dir=output_dir)
