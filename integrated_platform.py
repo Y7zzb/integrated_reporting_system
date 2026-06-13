@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-问卷数据一体化处理平台
+问卷数据一体化处理平台 
 整合所有模块：数据接入、无效筛查、图表生成、报告导出
 """
 
@@ -193,7 +193,20 @@ if process_basic or process_full:
                     except:
                         raw_df = pd.read_csv(temp_path, encoding='gbk')
                 else:
-                    raw_df = pd.read_excel(temp_path)
+                    # 尝试读取Excel文件
+                    try:
+                        if uploaded_file.name.lower().endswith('.xls'):
+                            # .xls格式尝试使用xlrd引擎
+                            raw_df = pd.read_excel(temp_path, engine='xlrd')
+                        else:
+                            # .xlsx格式使用openpyxl引擎
+                            raw_df = pd.read_excel(temp_path, engine='openpyxl')
+                    except ImportError:
+                        st.error("读取.xls文件需要安装xlrd模块，请先安装：pip install xlrd")
+                        raise
+                    except Exception as e:
+                        st.error(f"读取Excel文件失败: {str(e)}")
+                        raise
 
                 standard_df = normalize_dataframe(raw_df)
                 column_info = infer_columns(standard_df)
@@ -371,7 +384,7 @@ if st.session_state.get("questionnaire_result"):
                 for i, r in enumerate(report.likert_scale_results[:4]):
                     if r.chart_path and Path(r.chart_path).exists():
                         with cols[i % 2]:
-                            st.image(r.chart_path, caption=r.dimension_name, use_container_width=True)
+                            st.image(r.chart_path, caption=r.question_name, use_container_width=True)
                     if i >= 3:
                         st.info(f"还有 {len(report.likert_scale_results) - 4} 道量表题未展示")
                         break
@@ -406,8 +419,10 @@ if st.session_state.get("questionnaire_result"):
             if report.likert_scale_results:
                 st.markdown("#### 量表题分析")
                 for r in report.likert_scale_results[:5]:
-                    with st.expander(r.dimension_name):
-                        st.markdown(f"**均值**: {r.dimension_mean:.3f} | **标准差**: {r.dimension_std:.3f}")
+                    mean_val = r.central_tendency.get('mean', 0) if r.central_tendency else 0
+                    std_val = r.dispersion.get('std', 0) if r.dispersion else 0
+                    with st.expander(r.question_name):
+                        st.markdown(f"**均值**: {mean_val:.3f} | **标准差**: {std_val:.3f}")
                         st.markdown(f"**分析**: {r.analysis_text}")
         else:
             st.info("请先点击「完整处理」生成分析报告")
